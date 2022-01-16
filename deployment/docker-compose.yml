@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: restapi_dev
+      POSTGRES_USER: task
+      POSTGRES_PASSWORD: task
+    volumes:
+      - apiserverdb:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  postgres_test:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: restapi_test
+      POSTGRES_USER: task
+      POSTGRES_PASSWORD: task
+    ports:
+      - "8081:5432"
+volumes:
+  apiserverdb:
